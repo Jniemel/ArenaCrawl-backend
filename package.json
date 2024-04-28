@@ -9,10 +9,14 @@
     "start": "node server.js",
     "devstart": "nodemon server.js"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "author": "Jniemel",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
@@ -25,7 +29,6 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
