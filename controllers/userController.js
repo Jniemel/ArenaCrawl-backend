@@ -43,11 +43,25 @@ export const signUp_post = async (req, res) => {
     });
     return res.status(200).send({ user: user._id });
   } catch (err) {
-    handleCatchErr(res, err);
+    return handleCatchErr(res, err);
   }
 };
 
 export async function logIn_post(req, res) {
-  console.log(req.body);
-  return null;
+  try {
+    const valErrors = validationResult(req);
+    if (!valErrors.isEmpty()) {
+      return handleValErr(res, valErrors);
+    }
+    const user = await User.login(req.body.username, req.body.password);
+    const token = createToken(user._id);
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      secure: true,
+      tokenMaxAge: tokenMaxAge * 1000,
+    });
+    return res.status(200).json({ user: user._id });
+  } catch (err) {
+    return handleCatchErr(res, err);
+  }
 }

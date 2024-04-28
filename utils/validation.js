@@ -21,4 +21,15 @@ export const validateSignUp = [
     .escape(),
 ];
 
-export const validateLogIn = [];
+export const validateLogIn = [
+  body('username')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Please enter username')
+    .escape(),
+  body('password')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Please enter password')
+    .escape(),
+];
