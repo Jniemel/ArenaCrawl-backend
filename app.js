@@ -5,12 +5,15 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/auth.js';
+import homeRouter from './routes/home.js';
+import authUser from './utils/authMiddleware.js';
 
-// conf cors
+// configure cors
 const corsOptions = {
   origin: 'http://localhost:5000',
-  optionsSuccessStatus: 200,
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  optionsSuccessStatus: 200,
 };
 
 const app = express();
@@ -29,6 +32,9 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 // routes
-app.use('/', authRouter);
+app.use('/api/auth', authRouter);
+// always authenticate users on routes beyond auth
+app.use(authUser);
+app.use('/api/home', homeRouter);
 
 export default app;

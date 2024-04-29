@@ -7,8 +7,8 @@ import User from '../models/userModel.js';
 
 // jsonwebtoken
 const tokenMaxAge = 24 * 60 * 60; // 1 day
-const createToken = (id) =>
-  jwt.sign({ id }, process.env.JWT_SECRET, {
+const createToken = (id, username) =>
+  jwt.sign({ id, username }, process.env.JWT_SECRET, {
     expiresIn: tokenMaxAge,
   });
 
@@ -35,7 +35,7 @@ export const signUp_post = async (req, res) => {
       userName: req.body.username,
       password: req.body.password,
     });
-    const token = createToken(user._id);
+    const token = createToken(user._id, user.userName);
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: true,
@@ -54,7 +54,7 @@ export async function logIn_post(req, res) {
       return handleValErr(res, valErrors);
     }
     const user = await User.login(req.body.username, req.body.password);
-    const token = createToken(user._id);
+    const token = createToken(user._id, user.userName);
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: true,
@@ -64,4 +64,8 @@ export async function logIn_post(req, res) {
   } catch (err) {
     return handleCatchErr(res, err);
   }
+}
+
+export async function logOut_post() {
+  return null;
 }
