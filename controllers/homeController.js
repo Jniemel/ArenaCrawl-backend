@@ -13,7 +13,7 @@ export async function getGameState(req, res) {
   let gameState = await GameState.findGameState(name);
   if (!gameState) {
     gameState = await GameState.create({ owner: name });
-    return gameState;
+    return res.status(200).json(gameState);
   }
-  return gameState;
+  return res.status(200).json(gameState);
 }

@@ -23,10 +23,10 @@ const gameStateSchema = new Schema({
 gameStateSchema.statics.findGameState = async function (name) {
   const gameState = await this.findOne({ owner: name });
   if (gameState) {
-    console.log('Found!');
+    console.log('Game found!');
     return gameState;
   }
-  console.log('Not found!');
+  console.log('No game found!');
   return null;
 };
 

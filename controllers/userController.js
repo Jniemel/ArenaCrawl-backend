@@ -39,7 +39,7 @@ export const signUp_post = async (req, res) => {
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: true,
-      tokenMaxAge: tokenMaxAge * 1000,
+      MaxAge: tokenMaxAge * 1000,
     });
     return res.status(200).send({ user: user._id });
   } catch (err) {
@@ -58,7 +58,7 @@ export async function logIn_post(req, res) {
     res.cookie('jwt', token, {
       httpOnly: true,
       secure: true,
-      tokenMaxAge: tokenMaxAge * 1000,
+      MaxAge: tokenMaxAge * 1000,
     });
     return res.status(200).json({ user: user._id });
   } catch (err) {
@@ -66,6 +66,7 @@ export async function logIn_post(req, res) {
   }
 }
 
-export async function logOut_post() {
-  return null;
+export function logOut_get(req, res) {
+  res.cookie('jwt', '', { maxAge: 1 });
+  res.end();
 }

@@ -33,7 +33,7 @@ app.use(cors(corsOptions));
 
 // routes
 app.use('/api/auth', authRouter);
-// always authenticate users on routes beyond auth
+// authenticate user on requests on home-routes
 app.use(authUser);
 app.use('/api/home', homeRouter);
 
