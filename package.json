@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "0.0.0",
-  "description": "backend for DunkFights",
+  "description": "backend for ArenaCrawl",
   "private": true,
   "type": "module",
   "main": "app.js",
