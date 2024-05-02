@@ -14,6 +14,12 @@ module.exports = {
         sourceType: 'script',
       },
     },
+    {
+      env: {
+        jest: true,
+      },
+      files: ['tests/**/*'],
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -24,5 +30,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'no-console': 'off',
     'no-underscore-dangle': 'off',
+    'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
   },
 };
