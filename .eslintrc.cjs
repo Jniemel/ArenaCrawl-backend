@@ -21,9 +21,14 @@ module.exports = {
       files: ['tests/**/*'],
     },
   ],
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: ['@babel/plugin-syntax-import-assertions'],
+    },
   },
   rules: {
     'import/extensions': ['error', 'ignorePackages'],

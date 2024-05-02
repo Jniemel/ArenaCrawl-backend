@@ -6,6 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRouter from './routes/auth.js';
 import homeRouter from './routes/home.js';
+import charRouter from './routes/character.js';
 import authUser from './utils/authMiddleware.js';
 
 // configure cors
@@ -36,5 +37,6 @@ app.use('/api/auth', authRouter);
 // authenticate user on requests on home-routes
 app.use(authUser);
 app.use('/api/home', homeRouter);
+app.use('/api/char', charRouter);
 
 export default app;
