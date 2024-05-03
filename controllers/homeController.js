@@ -12,7 +12,9 @@ export async function getGameState(req, res) {
   }
   let gameState = await GameState.findGameState(name);
   if (!gameState) {
-    gameState = await GameState.create({ owner: name });
+    gameState = new GameState({ owner: name });
+    gameState.playerTeam.populateTeam(3);
+    gameState.save();
     return res.status(200).json(gameState);
   }
   return res.status(200).json(gameState);

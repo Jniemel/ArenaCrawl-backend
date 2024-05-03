@@ -1,9 +1,25 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
+// import { randomNumber, generateName, generateStats } from '../utils/rng.js';
+import { teamSchema } from './teamModel.js';
+// import characterClasses from '../assets/game/characterClasses.json' assert { type: 'json' };
 
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
+
+/*
+const teamSchema = new Schema({
+  name: {
+    type: String,
+    default: 'Brawl inc.',
+  },
+  champs: {
+    type: Array,
+    default: [],
+  },
+});
+*/
 
 const gameStateSchema = new Schema({
   owner: {
@@ -12,10 +28,12 @@ const gameStateSchema = new Schema({
     unique: true,
   },
   playerTeam: {
-    type: Array,
+    type: teamSchema,
+    default: () => ({}),
   },
   npcTeams: {
-    type: Array,
+    type: [teamSchema],
+    default: [],
   },
 });
 
@@ -30,9 +48,9 @@ gameStateSchema.statics.findGameState = async function (name) {
   return null;
 };
 
-// post save message
 gameStateSchema.post('save', (doc, next) => {
-  console.log(`New gameState was created & saved. Owner: ${doc.owner}`);
+  console.log(`New gameState was created & saved.`);
+  console.log(`Initial gameState:\n${doc}`);
   next();
 });
 
