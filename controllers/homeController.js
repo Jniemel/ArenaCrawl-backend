@@ -13,8 +13,8 @@ export async function getGameState(req, res) {
   let gameState = await GameState.findGameState(name);
   if (!gameState) {
     gameState = new GameState({ owner: name });
-    gameState.playerTeam.populateTeam(3);
-    gameState.populateNpcTeams(3);
+    gameState.playerTeam.populateTeam(6);
+    gameState.populateNpcTeams(3, 6);
     gameState.save();
     return res.status(200).json(gameState);
   }

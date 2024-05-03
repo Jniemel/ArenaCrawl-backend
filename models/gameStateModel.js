@@ -35,10 +35,10 @@ gameStateSchema.statics.findGameState = async function (name) {
   return null;
 };
 
-gameStateSchema.methods.populateNpcTeams = function (num) {
-  for (let i = 0; i < num; i++) {
+gameStateSchema.methods.populateNpcTeams = function (numOfNpcs, numOfChamps) {
+  for (let i = 0; i < numOfNpcs; i++) {
     const npc = new Team({ name: `Team ${generateName()}` });
-    npc.populateTeam(3);
+    npc.populateTeam(numOfChamps);
     this.npcTeams.push(npc);
   }
 };
