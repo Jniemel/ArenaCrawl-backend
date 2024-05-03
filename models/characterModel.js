@@ -15,6 +15,9 @@ export const characterSchema = new Schema({
   class: {
     type: String,
   },
+  cssColor: {
+    type: String,
+  },
   stats: {
     type: Object,
   },
@@ -32,6 +35,7 @@ characterSchema.pre('save', async function (next) {
     this.name = generateName();
     this.class = className.charAt(0).toUpperCase() + className.slice(1);
     this.stats = generateStats(characterClasses[className].statWeights);
+    this.cssColor = characterClasses[className].classCssColor;
   }
   next();
 });

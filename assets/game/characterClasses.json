@@ -1,5 +1,6 @@
 {
   "swordsman": {
+    "classCssColor": "gray",
     "statWeights": {
       "str": 35,
       "dex": 25,
@@ -9,6 +10,7 @@
     }
   },
   "rogue": {
+    "classCssColor": "orange",
     "statWeights": {
       "str": 20,
       "dex": 40,
@@ -18,6 +20,7 @@
     }
   },
   "bandit": {
+    "classCssColor": "red",
     "statWeights": {
       "str": 30,
       "dex": 30,
