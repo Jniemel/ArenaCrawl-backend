@@ -1,25 +1,12 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
-// import { randomNumber, generateName, generateStats } from '../utils/rng.js';
 import { teamSchema } from './teamModel.js';
-// import characterClasses from '../assets/game/characterClasses.json' assert { type: 'json' };
+import { generateName } from '../utils/rng.js';
 
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
-
-/*
-const teamSchema = new Schema({
-  name: {
-    type: String,
-    default: 'Brawl inc.',
-  },
-  champs: {
-    type: Array,
-    default: [],
-  },
-});
-*/
+const Team = mongoose.model('Team', teamSchema);
 
 const gameStateSchema = new Schema({
   owner: {
@@ -46,6 +33,14 @@ gameStateSchema.statics.findGameState = async function (name) {
   }
   console.log('No game found!');
   return null;
+};
+
+gameStateSchema.methods.populateNpcTeams = function (num) {
+  for (let i = 0; i < num; i++) {
+    const npc = new Team({ name: `Team ${generateName()}` });
+    npc.populateTeam(3);
+    this.npcTeams.push(npc);
+  }
 };
 
 gameStateSchema.post('save', (doc, next) => {
