@@ -7,8 +7,15 @@ import { characterSchema } from '../models/characterModel.js';
 
 const Character = mongoose.model('Character', characterSchema);
 
-export async function new_get() {
-  return null;
+export async function new_get(req, res) {
+  try {
+    const state = await GameState.findOne({ owner: req.username });
+    await state.populateRecruitment();
+    await state.save();
+    return res.status(200).end();
+  } catch (err) {
+    return handleCatchErr(res, err);
+  }
 }
 
 export async function buy_post(req, res) {
