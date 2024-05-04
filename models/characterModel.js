@@ -21,6 +21,10 @@ export const characterSchema = new Schema({
   stats: {
     type: Object,
   },
+  age: {
+    type: Number,
+    default: randomNumber(20, 32),
+  },
 });
 
 function getClassName() {

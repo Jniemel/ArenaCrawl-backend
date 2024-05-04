@@ -15,6 +15,7 @@ export async function getGameState(req, res) {
     gameState = new GameState({ owner: name });
     gameState.playerTeam.populateTeam(6);
     gameState.populateNpcTeams(3, 6);
+    gameState.populateRecruitment();
     gameState.save();
     return res.status(200).json(gameState);
   }

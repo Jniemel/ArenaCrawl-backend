@@ -2,11 +2,15 @@
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
 import { teamSchema } from './teamModel.js';
-import { generateName } from '../utils/rng.js';
+import { characterSchema } from './characterModel.js';
+import { recruitSchema } from './recruitModel.js';
+import { generateName, randomNumber } from '../utils/rng.js';
 
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
 const Team = mongoose.model('Team', teamSchema);
+const Character = mongoose.model('Character', characterSchema);
+const Recruit = mongoose.model('Recruit', recruitSchema);
 
 const gameStateSchema = new Schema({
   owner: {
@@ -20,6 +24,10 @@ const gameStateSchema = new Schema({
   },
   npcTeams: {
     type: [teamSchema],
+    default: [],
+  },
+  recruitment: {
+    type: [recruitSchema],
     default: [],
   },
 });
@@ -43,9 +51,20 @@ gameStateSchema.methods.populateNpcTeams = function (numOfNpcs, numOfChamps) {
   }
 };
 
+gameStateSchema.methods.populateRecruitment = function () {
+  const len = randomNumber(2, 6);
+  for (let i = 0; i < len; i++) {
+    const recruit = new Recruit({
+      recruitee: new Character({ age: randomNumber(20, 32) }),
+    });
+    this.recruitment.push(recruit);
+  }
+  // console.log(this.recruitment);
+};
+
 gameStateSchema.post('save', (doc, next) => {
   console.log(`New gameState was created & saved.`);
-  console.log(`Initial gameState:\n${doc}`);
+  // console.log(`Initial gameState:\n${doc}`);
   next();
 });
 
