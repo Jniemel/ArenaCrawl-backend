@@ -63,7 +63,7 @@ gameStateSchema.methods.populateRecruitment = function () {
 };
 
 gameStateSchema.post('save', (doc, next) => {
-  console.log(`New gameState was created & saved.`);
+  console.log(`GameState saved.`);
   // console.log(`Initial gameState:\n${doc}`);
   next();
 });

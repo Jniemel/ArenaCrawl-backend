@@ -3,6 +3,7 @@
 import 'dotenv/config';
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
+import { handleCatchErr, handleValErr } from '../utils/errorHandling.js';
 import User from '../models/userModel.js';
 
 // jsonwebtoken
@@ -11,19 +12,6 @@ const createToken = (id, username) =>
   jwt.sign({ id, username }, process.env.JWT_SECRET, {
     expiresIn: tokenMaxAge,
   });
-
-// handle validation errors
-const handleValErr = (res, errs) => {
-  const arr = errs.array();
-  console.error(arr);
-  return res.status(422).json({ errors: arr });
-};
-
-// handle catch errors
-const handleCatchErr = (res, err) => {
-  console.error(err.message, err.code);
-  return res.status(400).json({ errors: err });
-};
 
 export const signUp_post = async (req, res) => {
   try {

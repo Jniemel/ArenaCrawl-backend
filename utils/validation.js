@@ -33,3 +33,34 @@ export const validateLogIn = [
     .withMessage('Please enter password')
     .escape(),
 ];
+
+export const validateChamp = [
+  body('char.name' /* 'validation failed: name' */)
+    .trim()
+    .isLength({ min: 5, max: 12 })
+    .withMessage('here')
+    .isString()
+    .withMessage('here2')
+    .isAlpha()
+    .withMessage('here3')
+    .escape(),
+  body('char.age', 'validation failed: age')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('char.class', 'validation failed: class')
+    .trim()
+    .isLength({ min: 1, max: 25 })
+    .isString()
+    .isAlpha()
+    .escape(),
+  body('char.cssColor', 'validation failed: cssColor')
+    .trim()
+    .isLength({ min: 1, max: 25 })
+    .isString()
+    .isAlpha()
+    .escape(),
+  body('char.stats', 'validation failed: stats').isObject().trim().escape(),
+];
