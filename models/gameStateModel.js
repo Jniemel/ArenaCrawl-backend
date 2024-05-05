@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import { teamSchema } from './teamModel.js';
 import { characterSchema } from './characterModel.js';
 import { recruitSchema } from './recruitModel.js';
+import { battleSchema } from './battleModel.js';
 import { generateName, randomNumber } from '../utils/rng.js';
 
 // eslint-disable-next-line prefer-destructuring
@@ -29,6 +30,10 @@ const gameStateSchema = new Schema({
   recruitment: {
     type: [recruitSchema],
     default: [],
+  },
+  battle: {
+    type: battleSchema,
+    default: null,
   },
 });
 
@@ -59,7 +64,6 @@ gameStateSchema.methods.populateRecruitment = function () {
     });
     this.recruitment.push(recruit);
   }
-  // console.log(this.recruitment);
 };
 
 gameStateSchema.post('save', (doc, next) => {

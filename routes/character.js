@@ -5,7 +5,10 @@ import { validateChamp } from '../utils/validation.js';
 
 const router = express.Router();
 
+// get new recruit
 router.get('/new', new_get);
+
+// buy recruit
 router.post('/buy', validateChamp, buy_post);
 
 export default router;
