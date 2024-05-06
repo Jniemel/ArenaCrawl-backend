@@ -33,7 +33,7 @@ const gameStateSchema = new Schema({
   },
   battle: {
     type: battleSchema,
-    default: null,
+    default: () => ({}),
   },
 });
 

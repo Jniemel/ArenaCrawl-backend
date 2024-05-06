@@ -7,6 +7,11 @@ const Schema = mongoose.Schema;
 
 // eslint-disable-next-line import/prefer-default-export
 export const battleSchema = new Schema({
+  status: {
+    type: String,
+    enum: ['inactive', 'active', 'finished'],
+    default: 'inactive',
+  },
   // team starting south
   south: {
     type: [characterSchema],
