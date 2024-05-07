@@ -21,9 +21,10 @@ export async function start_get(req, res) {
       battle.log.push(
         `Battle initialized between ${playerTeam.name} and ${npcTeam.name}`,
       );
+      state.battle = battle;
       await state.save();
     }
-    return res.status(200).json(state.battle).end();
+    return res.status(200).json(state.battle);
   } catch (err) {
     return handleCatchErr(res, err);
   }
