@@ -67,7 +67,8 @@ gameStateSchema.methods.populateRecruitment = function () {
 };
 
 gameStateSchema.post('save', (doc, next) => {
-  console.log(`GameState saved.`);
+  const size = `${Buffer.byteLength(JSON.stringify(doc))} bytes`;
+  console.log(`GameState saved. Size: ${size}`);
   // console.log(`Initial gameState:\n${doc}`);
   next();
 });
