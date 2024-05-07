@@ -66,6 +66,13 @@ gameStateSchema.methods.populateRecruitment = function () {
   }
 };
 
+gameStateSchema.methods.initNewGame = function (gameState) {
+  gameState.playerTeam.populateTeam(6);
+  gameState.populateNpcTeams(3, 6);
+  gameState.populateRecruitment();
+  gameState.save();
+};
+
 gameStateSchema.post('save', (doc, next) => {
   const size = `${Buffer.byteLength(JSON.stringify(doc))} bytes`;
   console.log(`GameState saved. Size: ${size}`);
