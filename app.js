@@ -9,6 +9,7 @@ import homeRouter from './routes/home.js';
 import charRouter from './routes/character.js';
 import battleRouter from './routes/battle.js';
 import authUser from './utils/authMiddleware.js';
+import { reqSize, sendSize } from './utils/transactionSizeMiddleware.js';
 
 // configure cors
 const corsOptions = {
@@ -28,7 +29,9 @@ async function main() {
 main().catch((err) => console.log(err));
 
 // middleware
+app.use(reqSize);
 app.use(express.json());
+app.use(sendSize);
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
