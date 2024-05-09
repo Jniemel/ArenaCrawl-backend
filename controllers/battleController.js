@@ -10,7 +10,7 @@ const Battle = mongoose.model('Battle', battleSchema);
 export async function start_get(req, res) {
   try {
     const state = await GameState.findOne({ owner: req.username });
-    if (state.battle.status === 'init') {
+    if (state.battle.status === 'inactive') {
       const { playerTeam } = state;
       const npcTeam = state.npcTeams[0];
       // #TODO

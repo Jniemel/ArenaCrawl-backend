@@ -9,6 +9,9 @@ const unitStateSchema = new Schema({
   character: {
     type: characterSchema,
   },
+  player: {
+    type: String,
+  },
   team: {
     type: String,
   },
@@ -28,7 +31,7 @@ export const battleSchema = new Schema({
   status: {
     type: String,
     enum: ['inactive', 'init', 'active', 'finished'],
-    default: 'init',
+    default: 'inactive',
   },
   // team starting south
   south: {
