@@ -9,8 +9,8 @@ const Schema = mongoose.Schema;
 export const battleSchema = new Schema({
   status: {
     type: String,
-    enum: ['inactive', 'active', 'finished'],
-    default: 'inactive',
+    enum: ['inactive', 'init', 'active', 'finished'],
+    default: 'init',
   },
   // team starting south
   south: {
