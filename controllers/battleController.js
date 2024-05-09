@@ -6,6 +6,7 @@ import { battleSchema } from '../models/battleModel.js';
 
 const Battle = mongoose.model('Battle', battleSchema);
 
+// start battle
 export async function start_get(req, res) {
   try {
     const state = await GameState.findOne({ owner: req.username });
@@ -30,6 +31,14 @@ export async function start_get(req, res) {
   }
 }
 
-export function placeholder() {
-  return null;
+// save battle
+export async function save_post(req, res) {
+  const { unitStates } = req.body;
+  const state = await GameState.findOne({ owner: req.username });
+  if (state) {
+    state.battle.unitStates = unitStates;
+    await state.save();
+    return res.status(200).end();
+  }
+  return res.status(500).end();
 }

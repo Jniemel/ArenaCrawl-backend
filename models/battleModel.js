@@ -5,6 +5,24 @@ import { characterSchema } from './characterModel.js';
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
 
+const unitStateSchema = new Schema({
+  character: {
+    type: characterSchema,
+  },
+  team: {
+    type: String,
+  },
+  hp: {
+    type: Number,
+  },
+  x: {
+    type: Number,
+  },
+  y: {
+    type: Number,
+  },
+});
+
 // eslint-disable-next-line import/prefer-default-export
 export const battleSchema = new Schema({
   status: {
@@ -20,6 +38,7 @@ export const battleSchema = new Schema({
   north: {
     type: [characterSchema],
   },
+  // battle log
   log: {
     type: [String],
   },
@@ -30,5 +49,8 @@ export const battleSchema = new Schema({
   winner: {
     type: String,
     enum: ['south', 'north'],
+  },
+  unitStates: {
+    type: [unitStateSchema],
   },
 });
