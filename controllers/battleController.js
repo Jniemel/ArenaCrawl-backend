@@ -37,6 +37,9 @@ export async function save_post(req, res) {
   const state = await GameState.findOne({ owner: req.username });
   if (state) {
     state.battle.unitStates = unitStates;
+    if (state.battle.status === 'init') {
+      state.battle.status = 'active';
+    }
     await state.save();
     return res.status(200).end();
   }
