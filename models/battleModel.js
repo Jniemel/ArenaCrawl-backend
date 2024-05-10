@@ -18,11 +18,18 @@ const unitStateSchema = new Schema({
   hp: {
     type: Number,
   },
+  mp: {
+    type: Number,
+  },
   x: {
     type: Number,
   },
   y: {
     type: Number,
+  },
+  played: {
+    type: Boolean,
+    default: false,
   },
 });
 
