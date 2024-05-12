@@ -41,11 +41,17 @@ export const battleSchema = new Schema({
     default: 'inactive',
   },
   // team starting south
-  south: {
+  southId: {
+    type: mongoose.ObjectId,
+  },
+  southUnits: {
     type: [characterSchema],
   },
   // team starting north
-  north: {
+  northId: {
+    type: mongoose.ObjectId,
+  },
+  northUnits: {
     type: [characterSchema],
   },
   // battle log
