@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { handleCatchErr /* , handleValErr */ } from '../utils/errorHandling.js';
 import GameState from '../models/gameStateModel.js';
 import { battleSchema } from '../models/battleModel.js';
+import { randomNumber } from '../utils/rng.js';
 
 const Battle = mongoose.model('Battle', battleSchema);
 
@@ -12,10 +13,11 @@ export async function start_get(req, res) {
     const state = await GameState.findOne({ owner: req.username });
     if (state.battle.status === 'inactive') {
       const { playerTeam } = state;
-      const npcTeam = state.npcTeams[0];
       // #TODO
       // ADD LOGIC TO PICK ENEMY TEAM ACCORDING TO MATCH SCHEDULE
-      // FOR NOW PICK FIRST ENEMY TEAM
+      // FOR NOW PICK RANDOM
+      const npcTeam =
+        state.npcTeams[randomNumber(0, state.npcTeams.length - 1)];
       const battle = new Battle({ status: 'init' });
       battle.southId = playerTeam._id;
       playerTeam.champs.forEach((champ) => battle.southUnits.push(champ));
