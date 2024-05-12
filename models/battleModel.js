@@ -58,7 +58,8 @@ export const battleSchema = new Schema({
   },
   winner: {
     type: String,
-    enum: ['south', 'north'],
+    enum: ['undetermined', 'south', 'north'],
+    default: 'undetermined',
   },
   unitStates: {
     type: [unitStateSchema],

@@ -45,3 +45,17 @@ export async function save_post(req, res) {
   }
   return res.status(500).end();
 }
+
+// finish battle
+export async function finish_post(req, res) {
+  const { unitStates, result } = req.body;
+  const state = await GameState.findOne({ owner: req.username });
+  if (state) {
+    state.battle.unitStates = unitStates;
+    state.battle.status = 'finished';
+    state.battle.winner = result;
+    await state.save();
+    return res.status(200).end();
+  }
+  return res.status(500).end();
+}
