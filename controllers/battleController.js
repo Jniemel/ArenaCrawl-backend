@@ -7,7 +7,7 @@ import { randomNumber } from '../utils/rng.js';
 
 const Battle = mongoose.model('Battle', battleSchema);
 
-// start battle
+// start battle or get active battle data
 export async function start_get(req, res) {
   try {
     const state = await GameState.findOne({ owner: req.username });
