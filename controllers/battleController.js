@@ -62,10 +62,7 @@ export async function finish_post(req, res) {
   if (state) {
     state.battle.unitStates = unitStates;
     state.battle.status = 'finished';
-    state.battle.winner =
-      result === 'south'
-        ? state.battle.teamSouth.name
-        : state.battle.teamNorth.name;
+    state.battle.winner = result;
     if (logMsg) {
       state.battle.log.push(logMsg);
     }
