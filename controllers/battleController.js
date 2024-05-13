@@ -23,9 +23,10 @@ export async function start_get(req, res) {
       playerTeam.champs.forEach((champ) => battle.southUnits.push(champ));
       battle.northId = npcTeam._id;
       npcTeam.champs.forEach((champ) => battle.northUnits.push(champ));
-      battle.log.push(
-        `Battle initialized between ${playerTeam.name} and ${npcTeam.name}`,
-      );
+      battle.log.push({
+        type: 'init',
+        msg: `Battle initialized between ${playerTeam.name} and ${npcTeam.name}`,
+      });
       state.battle = battle;
       await state.save();
     }
@@ -37,10 +38,11 @@ export async function start_get(req, res) {
 
 // save battle
 export async function save_post(req, res) {
-  const { unitStates } = req.body;
+  const { unitStates, logMsg } = req.body;
   const state = await GameState.findOne({ owner: req.username });
   if (state) {
     state.battle.unitStates = unitStates;
+    state.battle.log.push(logMsg);
     if (state.battle.status === 'init') {
       state.battle.status = 'active';
     }
@@ -52,12 +54,15 @@ export async function save_post(req, res) {
 
 // finish battle
 export async function finish_post(req, res) {
-  const { unitStates, result } = req.body;
+  const { unitStates, result, logMsg } = req.body;
   const state = await GameState.findOne({ owner: req.username });
   if (state) {
     state.battle.unitStates = unitStates;
     state.battle.status = 'finished';
     state.battle.winner = result;
+    if (logMsg) {
+      state.battle.log.push(logMsg);
+    }
     await state.save();
     return res.status(200).end();
   }

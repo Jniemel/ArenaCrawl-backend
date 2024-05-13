@@ -46,8 +46,8 @@ characterSchema.pre('save', async function (next) {
     this.class = className.charAt(0).toUpperCase() + className.slice(1);
     this.stats = generateStats(characterClasses[className].statWeights);
     this.cssColor = characterClasses[className].classCssColor;
-    this.maxHp = this.stats.constitution * 2;
-    this.maxMp = this.stats.intelligence * 2;
+    this.maxHp = this.stats.constitution;
+    this.maxMp = this.stats.intelligence;
   }
   next();
 });

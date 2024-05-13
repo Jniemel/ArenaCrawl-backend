@@ -56,7 +56,7 @@ export const battleSchema = new Schema({
   },
   // battle log
   log: {
-    type: [String],
+    type: [Object],
   },
   division: {
     type: Number,
