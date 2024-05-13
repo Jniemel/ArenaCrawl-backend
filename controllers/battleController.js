@@ -11,7 +11,10 @@ const Battle = mongoose.model('Battle', battleSchema);
 export async function start_get(req, res) {
   try {
     const state = await GameState.findOne({ owner: req.username });
-    if (state.battle.status === 'inactive') {
+    if (
+      state.battle.status === 'inactive' ||
+      state.battle.status === 'finished'
+    ) {
       const { playerTeam } = state;
       // #TODO
       // ADD LOGIC TO PICK ENEMY TEAM ACCORDING TO MATCH SCHEDULE
@@ -19,9 +22,9 @@ export async function start_get(req, res) {
       const npcTeam =
         state.npcTeams[randomNumber(0, state.npcTeams.length - 1)];
       const battle = new Battle({ status: 'init' });
-      battle.southId = playerTeam._id;
+      battle.teamSouth = playerTeam;
       playerTeam.champs.forEach((champ) => battle.southUnits.push(champ));
-      battle.northId = npcTeam._id;
+      battle.teamNorth = npcTeam;
       npcTeam.champs.forEach((champ) => battle.northUnits.push(champ));
       battle.log.push({
         type: 'init',
@@ -59,7 +62,10 @@ export async function finish_post(req, res) {
   if (state) {
     state.battle.unitStates = unitStates;
     state.battle.status = 'finished';
-    state.battle.winner = result;
+    state.battle.winner =
+      result === 'south'
+        ? state.battle.teamSouth.name
+        : state.battle.teamNorth.name;
     if (logMsg) {
       state.battle.log.push(logMsg);
     }

@@ -1,5 +1,6 @@
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
+import { teamSchema } from './teamModel.js';
 import { characterSchema } from './characterModel.js';
 
 // eslint-disable-next-line prefer-destructuring
@@ -41,15 +42,15 @@ export const battleSchema = new Schema({
     default: 'inactive',
   },
   // team starting south
-  southId: {
-    type: mongoose.ObjectId,
+  teamSouth: {
+    type: teamSchema,
   },
   southUnits: {
     type: [characterSchema],
   },
   // team starting north
-  northId: {
-    type: mongoose.ObjectId,
+  teamNorth: {
+    type: teamSchema,
   },
   northUnits: {
     type: [characterSchema],
@@ -64,7 +65,6 @@ export const battleSchema = new Schema({
   },
   winner: {
     type: String,
-    enum: ['undetermined', 'south', 'north'],
     default: 'undetermined',
   },
   unitStates: {
