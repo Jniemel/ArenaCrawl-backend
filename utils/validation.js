@@ -38,11 +38,8 @@ export const validateChamp = [
   body('recruit.recruitee.name', 'validation failed: name')
     .trim()
     .isLength({ min: 5, max: 12 })
-    .withMessage('here')
     .isString()
-    .withMessage('here2')
     .isAlpha()
-    .withMessage('here3')
     .escape(),
   body('recruit.recruitee.age', 'validation failed: age')
     .trim()
@@ -110,5 +107,134 @@ export const validateChamp = [
     .not()
     .isEmpty()
     .isNumeric()
+    .escape(),
+];
+
+export const validateSaveGame = [
+  body('unitStates', 'unitStates validation failed').isArray({
+    min: 2,
+    max: 12,
+  }),
+  body('unitStates.*', 'unitStateObject validation failed').isObject(),
+  body('unitStates.*.character', 'character validation failed')
+    .not()
+    .isEmpty()
+    .isObject(),
+  body('unitStates.*.player', 'player validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isString()
+    .escape(),
+  body('unitStates.*.team', 'team validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isString()
+    .escape(),
+  body('unitStates.*.hp', 'hp validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.mp', 'mp validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.x', 'x validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.y', 'y validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.played', 'played validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isBoolean()
+    .escape(),
+  body('logMsg', 'logMsg validation failed').isObject(),
+  body('logMsg.*', 'logMsg.action validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .escape(),
+];
+
+export const validateFinishGame = [
+  body('unitStates', 'unitStates validation failed').isArray({
+    min: 2,
+    max: 12,
+  }),
+  body('unitStates.*', 'unitStateObject validation failed').isObject(),
+  body('unitStates.*.character', 'character validation failed')
+    .not()
+    .isEmpty()
+    .isObject(),
+  body('unitStates.*.player', 'player validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isString()
+    .escape(),
+  body('unitStates.*.team', 'team validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isString()
+    .escape(),
+  body('unitStates.*.hp', 'hp validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.mp', 'mp validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.x', 'x validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.y', 'y validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isNumeric()
+    .escape(),
+  body('unitStates.*.played', 'played validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isBoolean()
+    .escape(),
+  body('logMsg', 'logMsg validation failed')
+    .optional({ values: 'falsy' })
+    .isObject(),
+  body('logMsg.*', 'logMsgField validation failed')
+    .optional({ values: 'falsy' })
+    .trim()
+    .not()
+    .isEmpty()
+    .escape(),
+  body('result', 'result validation failed')
+    .trim()
+    .not()
+    .isEmpty()
+    .isString()
     .escape(),
 ];

@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import mongoose from 'mongoose';
-import { handleCatchErr /* , handleValErr */ } from '../utils/errorHandling.js';
+import { validationResult } from 'express-validator';
+import { handleCatchErr, handleValErr } from '../utils/errorHandling.js';
 import GameState from '../models/gameStateModel.js';
 import { battleSchema } from '../models/battleModel.js';
 import { randomNumber } from '../utils/rng.js';
@@ -41,6 +42,10 @@ export async function start_get(req, res) {
 
 // save battle
 export async function save_post(req, res) {
+  const valErrors = validationResult(req);
+  if (!valErrors.isEmpty()) {
+    return handleValErr(res, valErrors);
+  }
   const { unitStates, logMsg } = req.body;
   const state = await GameState.findOne({ owner: req.username });
   if (state) {

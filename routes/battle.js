@@ -5,11 +5,12 @@ import {
   save_post,
   finish_post,
 } from '../controllers/battleController.js';
+import { validateFinishGame, validateSaveGame } from '../utils/validation.js';
 
 const router = express.Router();
 
 router.get('/start', start_get);
-router.post('/save', /* #todo add validation */ save_post);
-router.post('/finish' /* #todo add validation */, finish_post);
+router.post('/save', validateSaveGame, save_post);
+router.post('/finish', validateFinishGame, finish_post);
 
 export default router;
