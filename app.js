@@ -1,9 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { rateLimit } from 'express-rate-limit';
 import authRouter from './routes/auth.js';
 import homeRouter from './routes/home.js';
 import charRouter from './routes/character.js';
@@ -19,6 +20,14 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
+const rateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 70,
+  message: 'Rate limit reached',
+  standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+});
+
 const app = express();
 
 // Set up mongoose connection
@@ -29,12 +38,13 @@ async function main() {
 main().catch((err) => console.log(err));
 
 // middleware
+app.use(cors(corsOptions));
+app.use(rateLimiter);
 app.use(reqSize);
 app.use(express.json());
 app.use(sendSize);
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors(corsOptions));
 
 // routes
 app.use('/api/auth', authRouter);
