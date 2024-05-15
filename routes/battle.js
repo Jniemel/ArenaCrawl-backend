@@ -10,6 +10,8 @@ import { validateFinishGame, validateSaveGame } from '../utils/validation.js';
 const router = express.Router();
 
 router.get('/start', start_get);
+
+// #TODO add equipment to validation
 router.post('/save', validateSaveGame, save_post);
 router.post('/finish', validateFinishGame, finish_post);
 

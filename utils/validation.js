@@ -120,6 +120,9 @@ export const validateSaveGame = [
     .not()
     .isEmpty()
     .isObject(),
+  // #TODO
+  // add unitStates.*.character.stats and unitStates.*.character.stats.* validations
+  // add unitStates.*.character.equipment and unitStates.*.character.equipment.* validations
   body('unitStates.*.player', 'player validation failed')
     .trim()
     .not()
@@ -180,6 +183,9 @@ export const validateFinishGame = [
     .not()
     .isEmpty()
     .isObject(),
+  // #TODO
+  // add unitStates.*.character.stats and unitStates.*.character.stats.* validations
+  // add unitStates.*.character.equipment and unitStates.*.character.equipment.* validations
   body('unitStates.*.player', 'player validation failed')
     .trim()
     .not()
