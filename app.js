@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
+import helmet from 'helmet';
 import authRouter from './routes/auth.js';
 import homeRouter from './routes/home.js';
 import charRouter from './routes/character.js';
@@ -22,7 +23,7 @@ const corsOptions = {
 
 const rateLimiter = rateLimit({
   windowMs: 60 * 1000,
-  limit: 70,
+  limit: 125,
   message: 'Rate limit reached',
   standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
@@ -38,6 +39,11 @@ async function main() {
 main().catch((err) => console.log(err));
 
 // middleware
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  }),
+);
 app.use(cors(corsOptions));
 app.use(rateLimiter);
 // app.use(reqSize);
