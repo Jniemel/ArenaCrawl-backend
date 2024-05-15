@@ -1,10 +1,27 @@
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
+
 import { randomNumber, generateName, generateStats } from '../utils/rng.js';
 import characterClasses from '../assets/game/characterClasses.json' assert { type: 'json' };
+import { armorSchema, mWeaponSchema, rWeaponSchema } from './itemModels.js';
 
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
+
+const equipmentSchema = new Schema({
+  mWeapon: {
+    type: mWeaponSchema,
+    default: () => ({}),
+  },
+  rWeapon: {
+    type: rWeaponSchema,
+    default: () => ({}),
+  },
+  chest: {
+    type: armorSchema,
+    default: () => ({}),
+  },
+});
 
 // eslint-disable-next-line import/prefer-default-export
 export const characterSchema = new Schema({
@@ -20,6 +37,10 @@ export const characterSchema = new Schema({
   },
   stats: {
     type: Object,
+  },
+  equipment: {
+    type: equipmentSchema,
+    default: () => ({}),
   },
   age: {
     type: Number,
@@ -38,7 +59,7 @@ function getClassName() {
   return classNames[randomNumber(0, classNames.length - 1)];
 }
 
-// set character class and stats
+// initialize character
 characterSchema.pre('save', async function (next) {
   if (!this.name) {
     const className = getClassName();
