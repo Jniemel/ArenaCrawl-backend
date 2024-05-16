@@ -6,12 +6,14 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit';
 import helmet from 'helmet';
+import authUser from './utils/authMiddleware.js';
+// import { reqSize, sendSize } from './utils/transactionSizeMiddleware.js';
+// routes
 import authRouter from './routes/auth.js';
 import homeRouter from './routes/home.js';
 import charRouter from './routes/character.js';
 import battleRouter from './routes/battle.js';
-import authUser from './utils/authMiddleware.js';
-// import { reqSize, sendSize } from './utils/transactionSizeMiddleware.js';
+import equipmentRouter from './routes/equipment.js';
 
 // configure cors
 const corsOptions = {
@@ -59,5 +61,6 @@ app.use(authUser);
 app.use('/api/home', homeRouter);
 app.use('/api/char', charRouter);
 app.use('/api/battle', battleRouter);
+app.use('/api/equipment', equipmentRouter);
 
 export default app;

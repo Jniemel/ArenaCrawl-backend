@@ -1,0 +1,116 @@
+{
+  "swords": [
+    {
+      "name": "Shortsword",
+      "price": "100",
+      "dies": "1",
+      "sides": "6"
+    },
+    {
+      "name": "Longsword",
+      "price": "300",
+      "dies": "1",
+      "sides": "8"
+    },
+    {
+      "name": "Viking sword",
+      "price": "450",
+      "dies": "2",
+      "sides": "4"
+    }
+  ],
+  "axes": [
+    {
+      "name": "Handaxe",
+      "price": "100",
+      "dies": "1",
+      "sides": "6"
+    },
+    {
+      "name": "Hatchet",
+      "price": "250",
+      "dies": "1",
+      "sides": "7"
+    },
+    {
+      "name": "Axe",
+      "price": "500",
+      "dies": "2",
+      "sides": "5"
+    }
+  ],
+  "daggers": [
+    {
+      "name": "Butterknife",
+      "price": "75",
+      "dies": "1",
+      "sides": "6"
+    },
+    {
+      "name": "Small knife",
+      "price": "150",
+      "dies": "1",
+      "sides": "7"
+    },
+    {
+      "name": "Dagger'",
+      "price": "350",
+      "dies": "1",
+      "sides": "9"
+    }
+  ],
+  "bows": [
+    {
+      "name": "Selfmade bow",
+      "price": "200",
+      "dies": "1",
+      "sides": "4"
+    },
+    {
+      "name": "Bow",
+      "price": "400",
+      "dies": "1",
+      "sides": "7"
+    },
+    {
+      "name": "Hunting bow",
+      "price": "650",
+      "dies": "2",
+      "sides": "5"
+    }
+  ],
+  "crossbows": [
+    {
+      "name": "Crude crossbow",
+      "price": "250",
+      "dies": "2",
+      "sides": "4"
+    },
+    {
+      "name": "Crossbow",
+      "price": "600",
+      "dies": "2",
+      "sides": "8"
+    }
+  ],
+  "thrown": [
+    {
+      "name": "Throwing knives",
+      "price": "200",
+      "dies": "1",
+      "sides": "4"
+    },
+    {
+      "name": "Throwing axes",
+      "price": "300",
+      "dies": "1",
+      "sides": "5"
+    },
+    {
+      "name": "Throwing axes",
+      "price": "400",
+      "dies": "1",
+      "sides": "7"
+    }
+  ]
+}

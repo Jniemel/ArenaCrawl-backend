@@ -9,6 +9,7 @@ const router = express.Router();
 router.get('/new', new_get);
 
 // buy recruit
+// #TODO add equipment to validation
 router.post('/buy', validateChamp, buy_post);
 
 export default router;
