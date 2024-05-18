@@ -1,0 +1,26 @@
+{
+  "chest": [
+    {
+      "name": "Padded shirt",
+      "price": "250",
+      "AC": "2"
+    },
+    {
+      "name": "Leather vest",
+      "price": "350",
+      "AC": "3"
+    }
+  ],
+  "others": [
+    {
+      "name": "Small shield",
+      "price": "200",
+      "AC": "2"
+    },
+    {
+      "name": "Buckler",
+      "price": "400",
+      "AC": "4"
+    }
+  ]
+}

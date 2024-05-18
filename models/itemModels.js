@@ -17,7 +17,7 @@ export const mWeaponSchema = new Schema({
   },
   subType: {
     type: String,
-    enum: ['fists', 'sword', 'axe', 'dagger'],
+    enum: ['fists', 'swords', 'axes', 'daggers'],
     default: 'fists',
   },
   primaryStat: {
@@ -32,6 +32,10 @@ export const mWeaponSchema = new Schema({
   dieSides: {
     type: Number,
     default: 5,
+  },
+  sellPrice: {
+    type: Number,
+    default: 0,
   },
 });
 
@@ -48,7 +52,7 @@ export const rWeaponSchema = new Schema({
   },
   subType: {
     type: String,
-    enum: ['empty', 'bow', 'crossbow', 'thrown'],
+    enum: ['empty', 'bows', 'crossbows', 'thrown'],
     default: 'empty',
   },
   primaryStat: {
@@ -61,6 +65,10 @@ export const rWeaponSchema = new Schema({
     default: 0,
   },
   dieSides: {
+    type: Number,
+    default: 0,
+  },
+  sellPrice: {
     type: Number,
     default: 0,
   },
@@ -84,6 +92,10 @@ export const armorSchema = new Schema({
     default: 'chest',
   },
   AC: {
+    type: Number,
+    default: 0,
+  },
+  sellPrice: {
     type: Number,
     default: 0,
   },
