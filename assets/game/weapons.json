@@ -4,19 +4,22 @@
       "name": "Shortsword",
       "price": "100",
       "dies": "1",
-      "sides": "6"
+      "sides": "6",
+      "primary": "strenght"
     },
     {
       "name": "Longsword",
       "price": "300",
       "dies": "1",
-      "sides": "8"
+      "sides": "8",
+      "primary": "strenght"
     },
     {
       "name": "Viking sword",
       "price": "450",
       "dies": "2",
-      "sides": "4"
+      "sides": "4",
+      "primary": "strenght"
     }
   ],
   "axes": [
@@ -24,19 +27,22 @@
       "name": "Handaxe",
       "price": "100",
       "dies": "1",
-      "sides": "6"
+      "sides": "6",
+      "primary": "strenght"
     },
     {
       "name": "Hatchet",
       "price": "250",
       "dies": "1",
-      "sides": "7"
+      "sides": "7",
+      "primary": "strenght"
     },
     {
       "name": "Axe",
       "price": "500",
       "dies": "2",
-      "sides": "5"
+      "sides": "5",
+      "primary": "strenght"
     }
   ],
   "daggers": [
@@ -44,19 +50,22 @@
       "name": "Butterknife",
       "price": "75",
       "dies": "1",
-      "sides": "6"
+      "sides": "6",
+      "primary": "dexterity"
     },
     {
       "name": "Small knife",
       "price": "150",
       "dies": "1",
-      "sides": "7"
+      "sides": "7",
+      "primary": "dexterity"
     },
     {
       "name": "Dagger'",
       "price": "350",
       "dies": "1",
-      "sides": "9"
+      "sides": "9",
+      "primary": "dexterity"
     }
   ],
   "bows": [
@@ -64,19 +73,22 @@
       "name": "Selfmade bow",
       "price": "200",
       "dies": "1",
-      "sides": "4"
+      "sides": "4",
+      "primary": "dexterity"
     },
     {
       "name": "Bow",
       "price": "400",
       "dies": "1",
-      "sides": "7"
+      "sides": "7",
+      "primary": "dexterity"
     },
     {
       "name": "Hunting bow",
       "price": "650",
       "dies": "2",
-      "sides": "5"
+      "sides": "5",
+      "primary": "dexterity"
     }
   ],
   "crossbows": [
@@ -84,13 +96,15 @@
       "name": "Crude crossbow",
       "price": "250",
       "dies": "2",
-      "sides": "4"
+      "sides": "4",
+      "primary": "dexterity"
     },
     {
       "name": "Crossbow",
       "price": "600",
       "dies": "2",
-      "sides": "8"
+      "sides": "8",
+      "primary": "dexterity"
     }
   ],
   "thrown": [
@@ -98,19 +112,22 @@
       "name": "Throwing knives",
       "price": "200",
       "dies": "1",
-      "sides": "4"
+      "sides": "4",
+      "primary": "strenght"
     },
     {
       "name": "Throwing axes",
       "price": "300",
       "dies": "1",
-      "sides": "5"
+      "sides": "5",
+      "primary": "strenght"
     },
     {
       "name": "Throwing axes",
       "price": "400",
       "dies": "1",
-      "sides": "7"
+      "sides": "7",
+      "primary": "strenght"
     }
   ]
 }
