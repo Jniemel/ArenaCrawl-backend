@@ -1,5 +1,5 @@
 {
-  "armors": [
+  "chest": [
     {
       "name": "Padded shirt",
       "price": "250",
@@ -11,7 +11,7 @@
       "AC": "3"
     }
   ],
-  "shields": [
+  "others": [
     {
       "name": "Small shield",
       "price": "200",

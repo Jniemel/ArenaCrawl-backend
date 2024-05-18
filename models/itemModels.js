@@ -52,7 +52,7 @@ export const rWeaponSchema = new Schema({
   },
   subType: {
     type: String,
-    enum: ['empty', 'bow', 'crossbow', 'thrown'],
+    enum: ['empty', 'bows', 'crossbows', 'thrown'],
     default: 'empty',
   },
   primaryStat: {
