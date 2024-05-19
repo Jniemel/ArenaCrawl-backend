@@ -22,6 +22,7 @@ export async function buy_post(req, res) {
   let reject = false;
   let msg = '';
   let item = null;
+  let newState = null;
   // check items properties from client match with the properties on server
   if (buyReq.shop === 'weapons') {
     item = weapons[buyReq.type].find((e) => e.name === buyReq.item.name);
@@ -56,9 +57,10 @@ export async function buy_post(req, res) {
         );
         msg = 'ok';
         await state.save();
+        newState = state;
       }
     }
-    return res.status(200).json({ reject, msg });
+    return res.status(200).json({ reject, msg, newState });
   }
   return res.status(500).end();
 }

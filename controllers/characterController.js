@@ -12,7 +12,7 @@ export async function new_get(req, res) {
     const state = await GameState.findOne({ owner: req.username });
     await state.populateRecruitment();
     await state.save();
-    return res.status(200).end();
+    return res.status(200).json({ state });
   } catch (err) {
     return handleCatchErr(res, err);
   }
@@ -41,7 +41,7 @@ export async function buy_post(req, res) {
     // remove the recruited character from recruit pool
     state.recruitment.id(_id).deleteOne();
     await state.save();
-    return res.status(200).end();
+    return res.status(200).json({ state });
   } catch (err) {
     return handleCatchErr(res, err);
   }
