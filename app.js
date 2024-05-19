@@ -10,6 +10,7 @@ import authUser from './utils/authMiddleware.js';
 // import { reqSize, sendSize } from './utils/transactionSizeMiddleware.js';
 // routes
 import authRouter from './routes/auth.js';
+import menuRouter from './routes/menu.js';
 import homeRouter from './routes/home.js';
 import charRouter from './routes/character.js';
 import battleRouter from './routes/battle.js';
@@ -56,7 +57,8 @@ app.use(cookieParser());
 
 // routes
 app.use('/api/auth', authRouter);
-// authenticate user on requests on home-routes
+app.use('/api/menu', menuRouter);
+// authenticate user on every requests in below routes
 app.use(authUser);
 app.use('/api/home', homeRouter);
 app.use('/api/char', charRouter);
