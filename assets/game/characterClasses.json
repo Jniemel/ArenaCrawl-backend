@@ -7,6 +7,18 @@
       "intelligence": 1,
       "constitution": 2,
       "willpower": 2
+    },
+    "skillWeights": {
+      "swords": 6,
+      "axes": 3,
+      "daggers": 2,
+      "bows": 1,
+      "crossbows": 1,
+      "thrown": 3,
+      "destruction": 1,
+      "healing": 1,
+      "protection": 1,
+      "enhancement": 1
     }
   },
   "rogue": {
@@ -17,6 +29,18 @@
       "intelligence": 1,
       "constitution": 2,
       "willpower": 1
+    },
+    "skillWeights": {
+      "swords": 3,
+      "axes": 1,
+      "daggers": 5,
+      "bows": 4,
+      "crossbows": 1,
+      "thrown": 1,
+      "destruction": 1,
+      "healing": 1,
+      "protection": 1,
+      "enhancement": 2
     }
   },
   "bandit": {
@@ -27,6 +51,18 @@
       "intelligence": 1,
       "constitution": 2,
       "willpower": 1
+    },
+    "skillWeights": {
+      "swords": 3,
+      "axes": 3,
+      "daggers": 2,
+      "bows": 2,
+      "crossbows": 3,
+      "thrown": 3,
+      "destruction": 1,
+      "healing": 1,
+      "protection": 1,
+      "enhancement": 1
     }
   }
 }

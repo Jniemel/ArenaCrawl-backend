@@ -29,8 +29,8 @@ function shuffleArray(array) {
   }
 }
 
-// total points
-const POINTS = 70;
+// total points = STAT_POINTS + 5 (each stat stars with 1)
+const STAT_POINTS = 70;
 // assing stats randomly with weights
 export function generateStats(statProfile) {
   const statList = [];
@@ -47,9 +47,39 @@ export function generateStats(statProfile) {
     intelligence: 1,
     willpower: 1,
   };
-  for (let i = 0; i < POINTS; i++) {
+  for (let i = 0; i < STAT_POINTS; i++) {
     const statToIncrement = statList[randomNumber(0, statList.length - 1)];
     stats[statToIncrement] += 1;
   }
   return stats;
+}
+
+// available starting skill points
+const SKILL_POINTS = 190;
+
+export function generateSkills(skillProfile) {
+  const skillList = [];
+  Object.entries(skillProfile).forEach((skill) => {
+    for (let i = 0; i < skill[1]; i++) {
+      skillList.push(skill[0]);
+    }
+  });
+  shuffleArray(skillList);
+  const skills = {
+    swords: 1,
+    axes: 1,
+    daggers: 1,
+    bows: 1,
+    crossbows: 1,
+    thrown: 1,
+    destruction: 1,
+    healing: 1,
+    protection: 1,
+    enhancement: 1,
+  };
+  for (let i = 0; i < SKILL_POINTS; i++) {
+    const skillToIncrement = skillList[randomNumber(0, skillList.length - 1)];
+    skills[skillToIncrement] += 1;
+  }
+  return skills;
 }

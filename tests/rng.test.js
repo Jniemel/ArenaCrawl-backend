@@ -1,4 +1,9 @@
-import { randomNumber, generateName, generateStats } from '../utils/rng.js';
+import {
+  randomNumber,
+  generateName,
+  generateStats,
+  generateSkills,
+} from '../utils/rng.js';
 
 describe('random number generation', () => {
   test('get random number', () => {
@@ -39,5 +44,29 @@ describe('generate stats', () => {
         0,
       ),
     ).toBe(75);
+  });
+});
+
+describe('generate skill', () => {
+  test('get random skills', () => {
+    const skillWeights = {
+      swords: 6,
+      axes: 3,
+      daggers: 2,
+      bows: 1,
+      crossbows: 1,
+      thrown: 3,
+      destruction: 1,
+      healing: 1,
+      protection: 1,
+      enhancement: 1,
+    };
+    console.log(generateSkills(skillWeights));
+    expect(
+      Object.values(generateSkills(skillWeights)).reduce(
+        (pre, cur) => pre + cur,
+        0,
+      ),
+    ).toBe(200);
   });
 });
