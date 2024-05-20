@@ -38,6 +38,9 @@ export const characterSchema = new Schema({
   stats: {
     type: Object,
   },
+  skills: {
+    type: Object,
+  },
   equipment: {
     type: equipmentSchema,
     default: () => ({}),

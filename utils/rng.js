@@ -21,57 +21,35 @@ export function generateName() {
   return name;
 }
 
-// generate stats for a character according to given stat weight profile
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    // eslint-disable-next-line no-param-reassign
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// total points
+const POINTS = 70;
+// assing stats randomly with weights
 export function generateStats(statProfile) {
-  // check that the stat weights total 100
-  if (!statProfile) {
-    return null;
-  }
-  const checkTotal = Object.values(statProfile);
-  if (checkTotal.reduce((prev, cur) => prev + cur, 0) !== 100 || !statProfile) {
-    return null;
-  }
-  // sort the stat weights into array from high to low
-  const profile = Object.entries(statProfile);
-  const sorted = profile.sort((a, b) => b[1] - a[1]);
-  // create tresholds to assign stat points according to
-  const tresholds = [];
-  let max = 100;
-  sorted.forEach((stat) => {
-    max -= stat[1];
-    tresholds.push([max, stat[0]]);
-  });
-  // assign stats
-  const totalStats = 70;
-  let toInc;
-  const stats = { str: 1, dex: 1, int: 1, con: 1, wil: 1 };
-  for (let i = 0; i < totalStats; i++) {
-    const num = randomNumber(0, 100);
-    switch (true) {
-      case num > tresholds[0][0]:
-        toInc = tresholds[0][1];
-        break;
-      case num >= tresholds[1][0]:
-        toInc = tresholds[1][1];
-        break;
-      case num >= tresholds[2][0]:
-        toInc = tresholds[2][1];
-        break;
-      case num >= tresholds[3][0]:
-        toInc = tresholds[3][1];
-        break;
-      default:
-        toInc = tresholds[4][1];
-        break;
+  const statList = [];
+  Object.entries(statProfile).forEach((stat) => {
+    for (let i = 0; i < stat[1]; i++) {
+      statList.push(stat[0]);
     }
-    // eslint-disable-next-line operator-assignment
-    stats[toInc] = stats[toInc] + 1;
-  }
-  return {
-    strenght: stats.str,
-    dexterity: stats.dex,
-    intelligence: stats.int,
-    constitution: stats.con,
-    willpower: stats.wil,
+  });
+  shuffleArray(statList);
+  const stats = {
+    strength: 1,
+    dexterity: 1,
+    constitution: 1,
+    intelligence: 1,
+    willpower: 1,
   };
+  for (let i = 0; i < POINTS; i++) {
+    const statToIncrement = statList[randomNumber(0, statList.length - 1)];
+    stats[statToIncrement] += 1;
+  }
+  return stats;
 }

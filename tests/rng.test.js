@@ -26,8 +26,13 @@ describe('random name generation', () => {
 
 describe('generate stats', () => {
   test('get random stats', () => {
-    const statWeights = { str: 30, dex: 20, int: 15, con: 20, wil: 15 };
-    expect(generateStats()).toBeNull();
+    const statWeights = {
+      strength: 3,
+      dexterity: 3,
+      intelligence: 1,
+      constitution: 2,
+      willpower: 1,
+    };
     expect(
       Object.values(generateStats(statWeights)).reduce(
         (pre, cur) => pre + cur,
