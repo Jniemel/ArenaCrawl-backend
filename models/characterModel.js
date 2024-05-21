@@ -1,7 +1,12 @@
 /* eslint-disable func-names */
 import mongoose from 'mongoose';
 
-import { randomNumber, generateName, generateStats } from '../utils/rng.js';
+import {
+  randomNumber,
+  generateName,
+  generateStats,
+  generateSkills,
+} from '../utils/rng.js';
 import characterClasses from '../assets/game/characterClasses.json' assert { type: 'json' };
 import { armorSchema, mWeaponSchema, rWeaponSchema } from './itemModels.js';
 
@@ -69,6 +74,7 @@ characterSchema.pre('save', async function (next) {
     this.name = generateName();
     this.class = className.charAt(0).toUpperCase() + className.slice(1);
     this.stats = generateStats(characterClasses[className].statWeights);
+    this.skills = generateSkills(characterClasses[className].skillWeights);
     this.cssColor = characterClasses[className].classCssColor;
     this.maxHp = this.stats.constitution;
     this.maxMp = this.stats.intelligence;
