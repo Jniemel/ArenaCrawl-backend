@@ -166,7 +166,7 @@ export const validateSaveGame = [
     .isBoolean()
     .escape(),
   body('logMsg', 'logMsg validation failed').isObject(),
-  body('logMsg.*', 'logMsg.action validation failed')
+  body('logMsg.*', 'logMsg.* validation failed')
     .trim()
     .not()
     .isEmpty()

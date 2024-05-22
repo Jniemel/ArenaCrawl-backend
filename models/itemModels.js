@@ -22,8 +22,8 @@ export const mWeaponSchema = new Schema({
   },
   primaryStat: {
     type: String,
-    enum: ['strenght', 'dexterity', 'Intelligence'],
-    default: 'strenght',
+    enum: ['strength', 'dexterity', 'intelligence'],
+    default: 'strength',
   },
   dies: {
     type: Number,
@@ -57,7 +57,7 @@ export const rWeaponSchema = new Schema({
   },
   primaryStat: {
     type: String,
-    enum: ['strenght', 'dexterity'],
+    enum: ['strength', 'dexterity'],
     default: 'dexterity',
   },
   dies: {

@@ -81,5 +81,5 @@ export function generateSkills(skillProfile) {
     const skillToIncrement = skillList[randomNumber(0, skillList.length - 1)];
     skills[skillToIncrement] += 1;
   }
-  return skills;
+  return { ...skills, fists: 50 };
 }

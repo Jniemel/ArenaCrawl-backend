@@ -5,21 +5,21 @@
       "price": "100",
       "dies": "1",
       "sides": "6",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Longsword",
       "price": "300",
       "dies": "1",
       "sides": "8",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Viking sword",
       "price": "450",
       "dies": "2",
       "sides": "4",
-      "primary": "strenght"
+      "primary": "strength"
     }
   ],
   "axes": [
@@ -28,21 +28,21 @@
       "price": "100",
       "dies": "1",
       "sides": "6",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Hatchet",
       "price": "250",
       "dies": "1",
       "sides": "7",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Axe",
       "price": "500",
       "dies": "2",
       "sides": "5",
-      "primary": "strenght"
+      "primary": "strength"
     }
   ],
   "daggers": [
@@ -113,21 +113,21 @@
       "price": "200",
       "dies": "1",
       "sides": "4",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Throwing axes",
       "price": "300",
       "dies": "1",
       "sides": "5",
-      "primary": "strenght"
+      "primary": "strength"
     },
     {
       "name": "Throwing axes",
       "price": "400",
       "dies": "1",
       "sides": "7",
-      "primary": "strenght"
+      "primary": "strength"
     }
   ]
 }
